@@ -58,7 +58,7 @@ To run the benchmarks for sorting and searching:
 ### Python
 Run the following scripts from the root directory:
 
-1. *** Sorting Benchmark ***:
+1. ***Sorting Benchmark***:
     ```sh
     Copy code
     python3 benchmarks/benchmark_sorting.py
