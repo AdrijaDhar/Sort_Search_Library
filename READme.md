@@ -83,6 +83,7 @@ Benchmark Results
 
 ## For detailed benchmark results, including tables and performance graphs, please refer to the following files:
 
-Sorting Benchmark Results
-Searching Benchmark Results
+1. **Benchmark Results Links**:
+   - **[Sorting Benchmark Results](results/sorting_results.md)**: This is a link to the generated results markdown file for sorting benchmarks.
+   - **[Searching Benchmark Results](results/searching_results.md)**: This is a link to the generated results markdown file for searching benchmarks.
 These documents contain comprehensive tables showing the time complexity for different input sizes, along with graphs for better visualization.
