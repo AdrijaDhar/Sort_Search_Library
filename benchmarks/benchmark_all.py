@@ -8,14 +8,14 @@ import matplotlib.pyplot as plt
 # Add the project root directory to the system path to resolve module import issues
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from sorting.sorting import SortingAlgorithms
-from searching.search import SearchAlgorithms
+from algorithms import SortingAlgorithms
+from algorithms import SearchAlgorithms
 
 # Define paths to save benchmark results
 results_folder = "results"
 os.makedirs(results_folder, exist_ok=True)
-benchmark_sorting_results_path = os.path.join(results_folder, "sorting_benchmark_results.md")
-benchmark_searching_results_path = os.path.join(results_folder, "searching_benchmark_results.md")
+benchmark_sorting_results_path = os.path.join(results_folder, "sorting_benchmark_results_unified.md")
+benchmark_searching_results_path = os.path.join(results_folder, "searching_benchmark_results_unified.md")
 
 # Input sizes to benchmark
 input_sizes = [100, 1000, 5000, 10000]
@@ -147,7 +147,7 @@ plt.title("Sorting Algorithm Benchmark")
 plt.yscale("log")  # Use logarithmic scale for better differentiation of time taken
 plt.legend()
 plt.grid(True)
-sorting_plot_path = os.path.join(plots_folder, "sorting_benchmark_plot.png")
+sorting_plot_path = os.path.join(plots_folder, "sorting_benchmark_plot_unified.png")
 plt.savefig(sorting_plot_path)
 plt.show()
 
@@ -162,6 +162,6 @@ plt.title("Searching Algorithm Benchmark")
 plt.yscale("log")  # Use logarithmic scale for better differentiation of time taken
 plt.legend()
 plt.grid(True)
-searching_plot_path = os.path.join(plots_folder, "searching_benchmark_plot.png")
+searching_plot_path = os.path.join(plots_folder, "searching_benchmark_plot_unified.png")
 plt.savefig(searching_plot_path)
 plt.show()

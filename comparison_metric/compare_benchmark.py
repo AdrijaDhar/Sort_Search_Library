@@ -1,5 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # Correct import
 import os
 
 # Define paths to the benchmark result files
@@ -11,62 +11,110 @@ benchmark_compare_folder = os.path.join(results_folder, "benchmark_compare")
 os.makedirs(results_folder, exist_ok=True)
 os.makedirs(benchmark_compare_folder, exist_ok=True)
 
-# Define paths to the benchmark result files
-sorting_unified_results_path = os.path.join(results_folder, "sorting_results.md")
-sorting_separate_results_path = os.path.join(benchmark_compare_folder, "separate_sort_result.md")
-searching_unified_results_path = os.path.join(results_folder, "searching_results.md")
-searching_separate_results_path = os.path.join(benchmark_compare_folder, "separate_search_result.md")
+# Corrected paths to the benchmark result files
+sorting_unified_results_path = os.path.join(results_folder, "sorting_benchmark_results_unified.md")
+sorting_separate_results_path = os.path.join(results_folder, "sorting_benchmark_results.md")
+searching_unified_results_path = os.path.join(results_folder, "searching_benchmark_results_unified.md")
+searching_separate_results_path = os.path.join(results_folder, "searching_benchmark_results.md")
 
-# Expected columns for sorting and searching
-sorting_algorithms = ["Quick Sort", "Merge Sort", "Bubble Sort"]
-searching_algorithms = ["Linear Search", "Binary Search"]
+# Full lists of sorting and searching algorithms to compare
+sorting_algorithms = [
+    "bubble_sort", "merge_sort", "quick_sort", "selection_sort", "insertion_sort",
+    "heap_sort", "counting_sort", "radix_sort", "shell_sort",
+    "bucket_sort", "cocktail_shaker_sort", "comb_sort", "gnome_sort",
+    "tim_sort", "pancake_sort", "tree_sort"
+]
+
+searching_algorithms = [
+    "linear_search", "binary_search", "jump_search", "interpolation_search",
+    "exponential_search", "fibonacci_search", "ternary_search",
+    "sentinel_linear_search", "meta_binary_search"
+]
+
+# Headers for sorting and searching benchmark files
+sorting_headers = [
+    "Input Size", "bubble_sort", "merge_sort", "quick_sort", "selection_sort", 
+    "insertion_sort", "heap_sort", "counting_sort", "radix_sort", "shell_sort", 
+    "bucket_sort", "cocktail_shaker_sort", "comb_sort", "gnome_sort", 
+    "tim_sort", "pancake_sort", "tree_sort"
+]
+
+searching_headers = [
+    "Input Size", "linear_search", "binary_search", "jump_search", 
+    "interpolation_search", "exponential_search", "fibonacci_search", 
+    "ternary_search", "sentinel_linear_search", "meta_binary_search"
+]
 
 # Function to read benchmark results from markdown and ensure all expected columns exist
-def read_benchmark_file(file_path, expected_columns):
+def read_benchmark_file(file_path, expected_columns, header_names):
     # Read the markdown, skipping the first 2 rows, which are headers
-    df = pd.read_csv(file_path, delimiter="|", skiprows=2)
+    df = pd.read_csv(file_path, delimiter="|", skiprows=2, skipinitialspace=True)
 
-    # Strip whitespace and remove special characters, normalize column names
-    df.columns = df.columns.str.strip().str.replace(r'[^a-zA-Z0-9 ]', '', regex=True)
+    # Remove unnamed columns that might be parsing artifacts
+    df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
 
-    # Remove 'sec' suffix from the algorithm names for matching with expected columns
-    df.columns = df.columns.str.replace(' sec', '', regex=False)
+    # Manually set the correct column headers
+    df.columns = header_names
 
-    # Drop unnecessary columns
-    df.dropna(axis=1, how='all', inplace=True)
+    # Debugging: Print the columns after manually setting headers
+    print(f"Columns in {file_path} after setting headers: {df.columns.tolist()}")
 
-    # Debugging: Print the column names to check if they match the expected columns
-    print(f"Columns after cleaning in {file_path}: {df.columns.tolist()}")
-
-    # Ensure that 'Input Size' is numeric and integer type
-    if 'Input Size' in df.columns:
-        df["Input Size"] = pd.to_numeric(df["Input Size"], errors='coerce')
-        df.dropna(subset=["Input Size"], inplace=True)
-        df["Input Size"] = df["Input Size"].astype(int)
-    else:
+    # Check if 'Input Size' column exists, if not raise an error
+    if 'Input Size' not in df.columns:
         raise KeyError("'Input Size' column is missing from the parsed DataFrame.")
 
-    # Convert other columns to numeric, handling non-numeric gracefully
-    for column in expected_columns:
-        if column in df.columns:
-            df[column] = pd.to_numeric(df[column], errors='coerce')
-        else:
-            print(f"Warning: Column '{column}' not found in {file_path}. Filling with 0.")
-            df[column] = 0  # Add missing column with default value of 0
+    # Move 'Input Size' to the first position
+    input_size_column = df.pop('Input Size')
+    df.insert(0, 'Input Size', input_size_column)
 
-    # Fill any remaining NaN values in metric columns with 0
+    # Convert all columns to appropriate types
+    df['Input Size'] = pd.to_numeric(df['Input Size'], errors='coerce')
+    df.dropna(subset=['Input Size'], inplace=True)
+    df['Input Size'] = df['Input Size'].astype(int)
+
+    # Convert other columns to numeric values
+    for column in df.columns:
+        if column != 'Input Size':
+            df[column] = pd.to_numeric(df[column], errors='coerce')
+
+    # Fill NaN values with 0 for all other columns
     df.fillna(0, inplace=True)
 
     # Debugging: Print the first few rows to verify the data
-    print(df.head())
+    print(f"First few rows of {file_path} after cleaning:\n", df.head())
 
     return df
 
+# Load data with updated header assignments
+try:
+    sorting_unified = read_benchmark_file(sorting_unified_results_path, sorting_algorithms, sorting_headers)
+except KeyError as e:
+    print(f"Error reading sorting unified benchmark file: {e}")
+
+try:
+    sorting_separate = read_benchmark_file(sorting_separate_results_path, sorting_algorithms, sorting_headers)
+except FileNotFoundError as e:
+    print(f"Error reading sorting separate benchmark file: {e}")
+
+try:
+    searching_unified = read_benchmark_file(searching_unified_results_path, searching_algorithms, searching_headers)
+except KeyError as e:
+    print(f"Error reading searching unified benchmark file: {e}")
+
+try:
+    searching_separate = read_benchmark_file(searching_separate_results_path, searching_algorithms, searching_headers)
+except FileNotFoundError as e:
+    print(f"Error reading searching separate benchmark file: {e}")
+
+# Continue with the rest of the script...
+
+
 # Load data
-sorting_unified = read_benchmark_file(sorting_unified_results_path, sorting_algorithms)
-sorting_separate = read_benchmark_file(sorting_separate_results_path, sorting_algorithms)
-searching_unified = read_benchmark_file(searching_unified_results_path, searching_algorithms)
-searching_separate = read_benchmark_file(searching_separate_results_path, searching_algorithms)
+sorting_unified = read_benchmark_file(sorting_unified_results_path, sorting_algorithms, sorting_headers)
+sorting_separate = read_benchmark_file(sorting_separate_results_path, sorting_algorithms, sorting_headers)
+searching_unified = read_benchmark_file(searching_unified_results_path, searching_algorithms, searching_headers)
+searching_separate = read_benchmark_file(searching_separate_results_path, searching_algorithms, searching_headers)
+
 
 # Calculate Differences and Optimization Percentage
 def calculate_differences_and_percentage(separate_df, unified_df, algorithms):

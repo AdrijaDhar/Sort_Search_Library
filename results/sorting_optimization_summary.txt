@@ -1,12 +1,32 @@
-For Quick Sort at input size 100.0, Unified approach was better by 54.26%
-For Quick Sort at input size 1000.0, Unified approach was better by 50.0%
-For Quick Sort at input size 5000.0, Unified approach was better by 42.11%
-For Quick Sort at input size 10000.0, Unified approach was better by 3.48%
-For Merge Sort at input size 100.0, Unified approach was better by 49.62%
-For Merge Sort at input size 1000.0, Unified approach was better by 18.03%
-For Merge Sort at input size 5000.0, Separate approach was better by 0.4%
-For Merge Sort at input size 10000.0, Unified approach was better by 3.67%
-For Bubble Sort at input size 100.0, Unified approach was better by 56.29%
-For Bubble Sort at input size 1000.0, Separate approach was better by 26.32%
-For Bubble Sort at input size 5000.0, Separate approach was better by 1.85%
-For Bubble Sort at input size 10000.0, Unified approach was better by 0.81%
+For bubble_sort at input size 5000.0, Separate approach was better by 0.42%
+For bubble_sort at input size 10000.0, Separate approach was better by 1.4%
+For merge_sort at input size 5000.0, Unified approach was better by 5.28%
+For merge_sort at input size 10000.0, Unified approach was better by 4.71%
+For quick_sort at input size 5000.0, Unified approach was better by 4.07%
+For quick_sort at input size 10000.0, Separate approach was better by 3.88%
+For selection_sort at input size 5000.0, Separate approach was better by 0.89%
+For selection_sort at input size 10000.0, Separate approach was better by 1.46%
+For insertion_sort at input size 5000.0, Unified approach was better by 0.92%
+For insertion_sort at input size 10000.0, Separate approach was better by 2.27%
+For heap_sort at input size 5000.0, Unified approach was better by 5.34%
+For heap_sort at input size 10000.0, Separate approach was better by 0.13%
+For counting_sort at input size 5000.0, Separate approach was better by 1.08%
+For counting_sort at input size 10000.0, Unified approach was better by 0.4%
+For radix_sort at input size 5000.0, Unified approach was better by 0.33%
+For radix_sort at input size 10000.0, Separate approach was better by 2.09%
+For shell_sort at input size 5000.0, Separate approach was better by 1.37%
+For shell_sort at input size 10000.0, Unified approach was better by 0.84%
+For bucket_sort at input size 5000.0, Separate approach was better by 1.18%
+For bucket_sort at input size 10000.0, Unified approach was better by 4.16%
+For cocktail_shaker_sort at input size 5000.0, Separate approach was better by 0.28%
+For cocktail_shaker_sort at input size 10000.0, Unified approach was better by 0.63%
+For comb_sort at input size 5000.0, Unified approach was better by 4.02%
+For comb_sort at input size 10000.0, Unified approach was better by 0.11%
+For gnome_sort at input size 5000.0, Unified approach was better by 0.4%
+For gnome_sort at input size 10000.0, Separate approach was better by 1.09%
+For tim_sort at input size 5000.0, Unified approach was better by 1.14%
+For tim_sort at input size 10000.0, Separate approach was better by 0.95%
+For pancake_sort at input size 5000.0, Separate approach was better by 0.41%
+For pancake_sort at input size 10000.0, Separate approach was better by 0.48%
+For tree_sort at input size 5000.0, Unified approach was better by 7.37%
+For tree_sort at input size 10000.0, Separate approach was better by 1.01%

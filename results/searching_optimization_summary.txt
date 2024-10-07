@@ -1,8 +1,18 @@
-For Linear Search at input size 100.0, Unified approach was better by 25.0%
-For Linear Search at input size 1000.0, Separate approach was better by 4.55%
-For Linear Search at input size 5000.0, Unified approach was better by 0.88%
-For Linear Search at input size 10000.0, both approaches performed the same.
-For Binary Search at input size 100.0, both approaches performed the same.
-For Binary Search at input size 1000.0, both approaches performed the same.
-For Binary Search at input size 5000.0, both approaches performed the same.
-For Binary Search at input size 10000.0, both approaches performed the same.
+For linear_search at input size 5000.0, Unified approach was better by 26.91%
+For linear_search at input size 10000.0, Unified approach was better by 53.5%
+For binary_search at input size 5000.0, both approaches performed the same.
+For binary_search at input size 10000.0, Unified approach was better by 55.56%
+For jump_search at input size 5000.0, Unified approach was better by 34.37%
+For jump_search at input size 10000.0, Unified approach was better by 42.05%
+For interpolation_search at input size 5000.0, Unified approach was better by 36.7%
+For interpolation_search at input size 10000.0, Unified approach was better by 75.26%
+For exponential_search at input size 5000.0, Separate approach was better by 6.25%
+For exponential_search at input size 10000.0, Separate approach was better by 157.69%
+For fibonacci_search at input size 5000.0, Separate approach was better by 30.77%
+For fibonacci_search at input size 10000.0, Unified approach was better by 35.0%
+For ternary_search at input size 5000.0, Unified approach was better by 38.46%
+For ternary_search at input size 10000.0, Unified approach was better by 35.29%
+For sentinel_linear_search at input size 5000.0, Unified approach was better by 36.95%
+For sentinel_linear_search at input size 10000.0, Unified approach was better by 51.87%
+For meta_binary_search at input size 5000.0, Unified approach was better by 66.67%
+For meta_binary_search at input size 10000.0, Unified approach was better by 69.23%
