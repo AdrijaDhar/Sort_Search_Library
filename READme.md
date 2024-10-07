@@ -37,9 +37,9 @@ To use the C++ version of the library, clone the repository and build it using C
 
 1. **Clone the Repository**:
     ```sh
-Copy code
-git clone https://github.com/AdrijaDhar/Sort_Search_Library.git
-cd Sort_Search_Library
+    Copy code
+    git clone https://github.com/AdrijaDhar/Sort_Search_Library.git
+    cd Sort_Search_Library
 
 2. **Build with CMake**:
     ```sh
@@ -48,6 +48,6 @@ cd Sort_Search_Library
     cd build
     cmake ..
     make
-    
+
 This will generate the necessary executable files for usage examples and benchmarks.
 
