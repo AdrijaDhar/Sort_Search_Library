@@ -30,20 +30,20 @@ To install the Python version of the library, you can clone the repository and i
    
 2. **Install the Library**:
     ```sh
-    Copy code
+    
     pip install .
 ### C++ Usage
 To use the C++ version of the library, clone the repository and build it using CMake:
 
 1. **Clone the Repository**:
     ```sh
-    Copy code
+    
     git clone https://github.com/AdrijaDhar/Sort_Search_Library.git
     cd Sort_Search_Library
 
 2. **Build with CMake**:
     ```sh
-    Copy code
+    
     mkdir build
     cd build
     cmake ..
@@ -60,23 +60,23 @@ Run the following scripts from the root directory:
 
 1. ***Sorting Benchmark***:
     ```sh
-    Copy code
+    
     python3 benchmarks/benchmark_sorting.py
 
 2. ***Searching Benchmark*** :
     ```sh
-    Copy code
+    
     python3 benchmarks/benchmark_searching.py
 ### C++
 Make sure you have compiled the C++ programs as mentioned in the C++ Installation Section:
 
 1. ***Sorting Benchmark***:
     ```sh
-    Copy code
+    
     ./benchmark_sorting
 2. ***Searching Benchmark***:
     ```sh
-    Copy code
+    
     ./benchmark_search
 
 Benchmark Results
