@@ -97,7 +97,9 @@ Make sure you have compiled the C++ programs as mentioned in the C++ Installatio
     ```sh
     
     ./benchmark_search
-
+3. ***Benchmar all***:
+    ```sh
+    ./benchmark_all
 Benchmark Results
 
 ## For detailed benchmark results, including tables and performance graphs, please refer to the following files:
