@@ -1,58 +1,72 @@
-import timeit
-import random
-import os
 import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import os
+import random
+import time
+import pandas as pd
+
+# Add the parent directory to the system path to resolve module import issues
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from sorting.sorting import SortingAlgorithms
-import matplotlib.pyplot as plt
 
-# Define the output path
-output_folder = "results"
-os.makedirs(output_folder, exist_ok=True)
-output_file_path = os.path.join(output_folder, "sorting_results.md")
+# Define paths to save benchmark results
+results_folder = "results"
+os.makedirs(results_folder, exist_ok=True)
+benchmark_results_path = os.path.join(results_folder, "sorting_benchmark_results.md")
 
-# Benchmark Sorting Algorithms and Save Results
-sizes = [100, 1000, 5000, 10000]
-quick_sort_times = []
-merge_sort_times = []
-bubble_sort_times = []
+# Input sizes to benchmark
+input_sizes = [100, 1000, 5000, 10000]
 
-# Open the output file for writing
-with open(output_file_path, "w") as f:
-    f.write("# Sorting Benchmark Results\n\n")
-    f.write("| Input Size | Quick Sort (sec) | Merge Sort (sec) | Bubble Sort (sec) |\n")
-    f.write("|------------|------------------|------------------|-------------------|\n")
+# Sorting algorithms to benchmark
+sorting_algorithms = [
+    "bubble_sort",
+    "merge_sort",
+    "quick_sort",
+    "selection_sort",
+    "insertion_sort",
+    "heap_sort",
+    "counting_sort",
+    "radix_sort",
+    "shell_sort",
+    "bucket_sort",
+    "cocktail_shaker_sort",
+    "comb_sort",
+    "gnome_sort",
+    "tim_sort",
+    "pancake_sort",
+    "tree_sort"
+]
 
-    for size in sizes:
-        # Generate random array
-        arr = [random.randint(0, 10000) for _ in range(size)]
+# Dictionary to hold benchmark results
+benchmark_results = {algorithm: [] for algorithm in sorting_algorithms}
+benchmark_results["Input Size"] = input_sizes
 
-        # Quick Sort
-        quick_sort_time = timeit.timeit(lambda: SortingAlgorithms.quick_sort(arr.copy(), 0, len(arr) - 1), number=1)
-        quick_sort_times.append(quick_sort_time)
+# Benchmark each algorithm
+for size in input_sizes:
+    # Generate a random list of the given size
+    array = [random.randint(0, 10000) for _ in range(size)]
 
-        # Merge Sort
-        merge_sort_time = timeit.timeit(lambda: SortingAlgorithms.merge_sort(arr.copy()), number=1)
-        merge_sort_times.append(merge_sort_time)
+    for algorithm in sorting_algorithms:
+        # Make a copy of the array for each run
+        arr_copy = array.copy()
 
-        # Bubble Sort
-        bubble_sort_time = timeit.timeit(lambda: SortingAlgorithms.bubble_sort(arr.copy()), number=1)
-        bubble_sort_times.append(bubble_sort_time)
+        # Get the sorting function by name
+        sort_function = getattr(SortingAlgorithms, algorithm)
 
-        # Write results to file
-        f.write(f"| {size} | {quick_sort_time:.6f} | {merge_sort_time:.6f} | {bubble_sort_time:.6f} |\n")
+        # Benchmark the sorting function
+        start_time = time.time()
+        sort_function(arr_copy)
+        end_time = time.time()
 
-# Plot and Save Graph
-plt.figure(figsize=(10, 6))
-plt.plot(sizes, quick_sort_times, label='Quick Sort', marker='o')
-plt.plot(sizes, merge_sort_times, label='Merge Sort', marker='o')
-plt.plot(sizes, bubble_sort_times, label='Bubble Sort', marker='o')
-plt.xlabel('Input Size')
-plt.ylabel('Time (seconds)')
-plt.title('Sorting Algorithm Performance')
-plt.yscale('log')  # Log scale to better visualize differences
-plt.legend()
-plt.grid(True)
-plt.savefig(os.path.join(output_folder, "sorting_performance.png"))
-plt.close()
+        # Record the time taken
+        time_taken = end_time - start_time
+        benchmark_results[algorithm].append(time_taken)
+
+# Convert the results to a DataFrame for easy handling and saving
+benchmark_df = pd.DataFrame(benchmark_results)
+
+# Save the benchmark results as a markdown file
+benchmark_df.to_markdown(benchmark_results_path, index=False)
+
+# Print benchmark results
+print(benchmark_df)
