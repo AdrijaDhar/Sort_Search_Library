@@ -2,23 +2,42 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## Overview
-**Sort Search Library** is a collection of custom sorting and searching algorithms implemented in Python and C++. It includes efficient algorithms for sorting lists and searching through them, aimed at providing an easy-to-use toolkit for both educational and practical applications.
+Welcome to the **Custom Sorting and Search Algorithms Library**! This project aims to implement a comprehensive library of custom sorting and search algorithms optimized for different use cases, such as external sorting and in-memory sorting. It also includes performance benchmarks and comparisons with standard algorithms.
 
-This library also comes with performance benchmarks, showcasing how different algorithms scale with increasing data sizes. The project serves as a resource for learning, research, and practical implementation of fundamental algorithms in computer science.
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Benchmarking](#benchmarking)
+6. [Results](#results)
+7. [Contributing](#contributing)
+8. [License](#license)
+
+## Overview
+
+This library includes a wide variety of sorting and searching algorithms implemented in Python and C++. The project also provides performance benchmarks to help understand the time complexity of different algorithms for varying input sizes. The goal is to highlight skills in algorithm design, complexity analysis, and optimization techniques.
 
 ## Features
-- **Sorting Algorithms**:
-  - Quick Sort
-  - Merge Sort
-  - Bubble Sort
-- **Searching Algorithms**:
-  - Linear Search
-  - Binary Search
-- **Multi-Language Support**: Implemented in Python and C++
-- **Benchmarking and Visual Analysis**: Includes performance benchmarks with visualizations
+
+- Sorting Algorithms:
+  - Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort
+  - Heap Sort, Counting Sort, Radix Sort, Shell Sort, Bingo Sort, Bucket Sort
+  - Cocktail Shaker Sort, Comb Sort, Gnome Sort, Tim Sort, Pancake Sort
+  - Tree Sort, Cycle Sort, Strand Sort, Bogo Sort, Pigeonhole Sort, Bitonic Sort
+
+- Searching Algorithms:
+  - Linear Search, Binary Search, Jump Search, Interpolation Search, Exponential Search
+  - Fibonacci Search, Depth First Search (DFS), Breadth First Search (BFS)
+  - Ternary Search, Sentinel Linear Search, Meta Binary Search
+
+- **Benchmarking**: Measure the performance of sorting and searching algorithms for varying input sizes and visualize the results.
 
 ## Installation
+
+To set up the library and run the benchmarks:
+
 
 ### Python Installation
 To install the Python version of the library, you can clone the repository and install it locally:
@@ -84,5 +103,7 @@ Benchmark Results
 ## For detailed benchmark results, including tables and performance graphs, please refer to the following files:
 
 1. **Benchmark Results Links**:
-   - **[Sorting Benchmark Results](results/sorting_results.md)**: This is a link to the generated results markdown file for sorting benchmarks.
-   - **[Searching Benchmark Results](results/searching_results.md)**: This is a link to the generated results markdown file for searching benchmarks.
+   - **[Sorting Benchmark Results](results/sorting_benchmark_results.md)**: This is a link to the generated results markdown file for sorting benchmarks.
+   - **[Sorting Benchmark Plots](results/plots/sorting_benchmark_plot.png)**: This is link to the generated results markdown file for sorting benchmarks.
+   - **[Searching Benchmark Results](results/searching_benchmark_results.md)**: This is a link to the generated results markdown file for searching benchmarks.
+   - **[Searching Benchmark Plots](results/plots/searching_benchmark_plot.png)**: This is link to the generated results markdown file for searching benchmarks.
