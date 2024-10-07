@@ -1,0 +1,8 @@
+For Linear Search at input size 100.0, Unified approach was better by 25.0%
+For Linear Search at input size 1000.0, Separate approach was better by 4.55%
+For Linear Search at input size 5000.0, Unified approach was better by 0.88%
+For Linear Search at input size 10000.0, both approaches performed the same.
+For Binary Search at input size 100.0, both approaches performed the same.
+For Binary Search at input size 1000.0, both approaches performed the same.
+For Binary Search at input size 5000.0, both approaches performed the same.
+For Binary Search at input size 10000.0, both approaches performed the same.

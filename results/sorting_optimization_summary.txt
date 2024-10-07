@@ -1,0 +1,12 @@
+For Quick Sort at input size 100.0, Unified approach was better by 54.26%
+For Quick Sort at input size 1000.0, Unified approach was better by 50.0%
+For Quick Sort at input size 5000.0, Unified approach was better by 42.11%
+For Quick Sort at input size 10000.0, Unified approach was better by 3.48%
+For Merge Sort at input size 100.0, Unified approach was better by 49.62%
+For Merge Sort at input size 1000.0, Unified approach was better by 18.03%
+For Merge Sort at input size 5000.0, Separate approach was better by 0.4%
+For Merge Sort at input size 10000.0, Unified approach was better by 3.67%
+For Bubble Sort at input size 100.0, Unified approach was better by 56.29%
+For Bubble Sort at input size 1000.0, Separate approach was better by 26.32%
+For Bubble Sort at input size 5000.0, Separate approach was better by 1.85%
+For Bubble Sort at input size 10000.0, Unified approach was better by 0.81%
