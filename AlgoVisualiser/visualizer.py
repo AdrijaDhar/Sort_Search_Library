@@ -1,30 +1,26 @@
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-import time
+from tkinter import *
+from sort_visuals import bubble_sort, insertion_sort, quick_sort
+from search_visuals import linear_search, binary_search
 
-def bubble_sort_visual(arr):
-    n = len(arr)
-    fig, ax = plt.subplots()
-    bars = ax.bar(range(len(arr)), arr, align="edge", color="skyblue")
+def main():
+    window = Tk()
+    window.title("Algorithm Visualizer")
+    canvas = Canvas(window, width=800, height=400, bg="white")
+    canvas.pack()
 
-    def update_bars(frame):
-        for i in range(frame[0]):
-            if frame[1] == i or frame[2] == i:
-                bars[i].set_color('orange')
-            else:
-                bars[i].set_color('skyblue')
-            bars[i].set_height(arr[i])
+    data = [10, 30, 20, 50, 40, 60, 5, 25]
+    delay = 0.5  # Animation speed
 
-    def sort_generator():
-        for i in range(n):
-            for j in range(n-i-1):
-                if arr[j] > arr[j+1]:
-                    arr[j], arr[j+1] = arr[j+1], arr[j]
-                yield j, j+1  # Return current step for visualization
+    # Sorting Buttons
+    Button(window, text="Bubble Sort", command=lambda: bubble_sort(canvas, data, delay)).pack()
+    Button(window, text="Insertion Sort", command=lambda: insertion_sort(canvas, data, delay)).pack()
+    Button(window, text="Quick Sort", command=lambda: quick_sort(canvas, data, 0, len(data) - 1, delay)).pack()
 
-    ani = animation.FuncAnimation(fig, update_bars, frames=sort_generator, repeat=False, blit=False)
-    plt.show()
+    # Searching Buttons
+    Button(window, text="Linear Search", command=lambda: linear_search(canvas, data, 20, delay)).pack()
+    Button(window, text="Binary Search", command=lambda: binary_search(canvas, sorted(data), 20, delay)).pack()
 
-# Example usage:
-data = [30, 25, 40, 70, 15, 90, 10, 80]
-bubble_sort_visual(data)
+    window.mainloop()
+
+if __name__ == "__main__":
+    main()
